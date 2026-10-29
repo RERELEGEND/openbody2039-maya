@@ -55,5 +55,13 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.2",
     "ws": "^8.18.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RERELEGEND/openbody2039-maya.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RERELEGEND/openbody2039-maya/issues"
+  },
+  "homepage": "https://rerelegend.github.io/openbody2039-maya/"
 }

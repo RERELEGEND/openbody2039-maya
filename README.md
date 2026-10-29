@@ -1,7 +1,7 @@
 # OpenBody2039 MAYA — MCP
 
 > **给 AI Agent 一个身体。** 虚拟人叫 **MAYA**。  
-> 宣传页：[docs/promo/index.html](docs/promo/index.html)
+> 宣传页：[在线](https://rerelegend.github.io/openbody2039-maya/) · [源码](docs/promo/index.html) · [仓库](https://github.com/RERELEGEND/openbody2039-maya)
 
 Universal **Model Context Protocol** server for avatar **body knowledge** and **intent-level control**.
 
