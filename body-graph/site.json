@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "generatedAt": "2026-10-29T09:13:12.950Z",
+    "package": "OpenBody2039_MAYA",
+    "avatarSource": "avatar-source/",
+    "note": "Self-contained MCP; any viewer implementing PROTOCOL can attach to the bridge"
+  },
+  "env": {
+    "os": "Ubuntu 22.04",
+    "node": ">=20"
+  },
+  "pages": [
+    {
+      "id": "viewer",
+      "path": "/",
+      "role": "兼容 viewer · 桥接目标（建议 ?mcp=1）",
+      "bridge": true
+    }
+  ],
+  "bridge": {
+    "query": "mcp=1",
+    "wsUrlDefault": "ws://127.0.0.1:8787",
+    "portEnv": "OPENBODY_WS_PORT",
+    "defaultPort": 8787,
+    "status": "p1_available",
+    "enableQuery": "mcp=1"
+  },
+  "dev": {
+    "mcp": "npm run mcp",
+    "bridge": "npm run bridge",
+    "exportGraph": "npm run export:graph",
+    "avatarSrcEnv": "OPENBODY_AVATAR_SRC",
+    "typicalViewerUrl": "http://127.0.0.1:5173/?mcp=1"
+  },
+  "counts": {
+    "runtimeSkinnedBones": 73,
+    "verifiedProbeJoints": 73,
+    "jointDefsNamed": 33,
+    "facePresets": 53,
+    "standingPoses": 7
+  }
+}

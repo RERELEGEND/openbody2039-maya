@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "generatedAt": "2026-10-29T09:13:12.950Z",
+    "sources": [
+      "avatar-source/src/actionFlow.js",
+      "OpenBody PROTOCOL (compatible viewer facade)"
+    ],
+    "note": "cycles describe OpenBody-compatible viewer conventions; not bound to a specific product repo"
+  },
+  "facade": {
+    "version": "2.0.0",
+    "entry": "window.MAYA",
+    "ready": "MAYA.whenReady()"
+  },
+  "namespaces": [
+    {
+      "key": "flow",
+      "global": "__MAYA_ACTION_FLOW",
+      "methods": [
+        "playAuto",
+        "stop",
+        "pause",
+        "resume",
+        "next",
+        "run",
+        "listSteps",
+        "getStatus"
+      ]
+    },
+    {
+      "key": "pose",
+      "global": "__MAYA_POSE",
+      "methods": [
+        "listBones",
+        "setDelta",
+        "getDelta",
+        "applyPose",
+        "resetAll",
+        "walkPlay",
+        "walkStop",
+        "walkPlaying"
+      ]
+    },
+    {
+      "key": "fx",
+      "global": "__MAYA_FX",
+      "methods": [
+        "setForm",
+        "getForm",
+        "playShowcase",
+        "stopShowcase"
+      ]
+    },
+    {
+      "key": "anim",
+      "global": "__MAYA_ANIM",
+      "methods": [
+        "play",
+        "stop",
+        "list",
+        "current"
+      ]
+    },
+    {
+      "key": "view",
+      "global": "__MAYA_VIEW",
+      "methods": [
+        "getRoot",
+        "focusBone",
+        "setCameraFront",
+        "setCameraSide",
+        "setCameraTop"
+      ]
+    },
+    {
+      "key": "reveal",
+      "global": "__MAYA_REVEAL",
+      "methods": [
+        "play",
+        "skip",
+        "isPlaying"
+      ]
+    },
+    {
+      "key": "speech",
+      "global": null,
+      "methods": [
+        "startMic",
+        "stopMic",
+        "isActive",
+        "setEmotion",
+        "getEmotion"
+      ]
+    }
+  ],
+  "bodyCycles": [
+    {
+      "id": "smileWave",
+      "global": "__MAYA_SMILE_WAVE",
+      "mayaPath": "MAYA.cycles.smileWave",
+      "meaning": "微笑挥手"
+    },
+    {
+      "id": "discoverHands",
+      "global": "__MAYA_DISCOVER_HANDS",
+      "mayaPath": "MAYA.cycles.discoverHands",
+      "meaning": "看手1"
+    },
+    {
+      "id": "discoverHands2",
+      "global": "__MAYA_DISCOVER_HANDS2",
+      "mayaPath": "MAYA.cycles.discoverHands2",
+      "meaning": "看手2"
+    },
+    {
+      "id": "discoverHandsMorph",
+      "global": "__MAYA_DISCOVER_HANDS_MORPH",
+      "mayaPath": "MAYA.cycles.discoverHandsMorph",
+      "meaning": "看手过渡"
+    },
+    {
+      "id": "hands2ToSmile",
+      "global": "__MAYA_HANDS2_TO_SMILE",
+      "mayaPath": "MAYA.cycles.hands2ToSmile",
+      "meaning": "看手2→挥手"
+    },
+    {
+      "id": "smileToNewStand",
+      "global": "__MAYA_SMILE_TO_NEWSTAND",
+      "mayaPath": "MAYA.cycles.smileToNewStand",
+      "meaning": "挥手→NEW站姿"
+    }
+  ],
+  "actionFlowDefault": [
+    {
+      "id": "wordMaya",
+      "label": "① 点云字 MAYA",
+      "kind": "form",
+      "form": "word",
+      "holdSec": 2.5
+    },
+    {
+      "id": "cloudPerson",
+      "label": "② 点云人",
+      "kind": "form",
+      "form": "cloudPerson",
+      "holdSec": 2.5
+    },
+    {
+      "id": "solidPerson",
+      "label": "③ 实体人",
+      "kind": "form",
+      "form": "solid",
+      "holdSec": 2.5
+    },
+    {
+      "id": "handsMorph",
+      "label": "④ 看手1-看手2",
+      "kind": "handsMorph",
+      "holdSec": 0.35
+    },
+    {
+      "id": "smileWave",
+      "label": "⑤ 看手2→微笑挥手",
+      "kind": "smileWaveFromHands",
+      "holdSec": 3
+    },
+    {
+      "id": "newStand",
+      "label": "⑥ 挥手→NEW_站姿",
+      "kind": "newStand",
+      "holdSec": 4
+    }
+  ],
+  "primitivesPlanned": [
+    {
+      "prim": "stand",
+      "mapsTo": "STANDING_POSES.*"
+    },
+    {
+      "prim": "wave",
+      "mapsTo": "__MAYA_SMILE_WAVE / smileWave"
+    },
+    {
+      "prim": "walk",
+      "mapsTo": "MAYA.pose.walkPlay/Stop"
+    },
+    {
+      "prim": "express",
+      "mapsTo": "facePresets tween"
+    },
+    {
+      "prim": "nod",
+      "mapsTo": "Head/Neck short curve"
+    },
+    {
+      "prim": "shake",
+      "mapsTo": "Head RY short curve"
+    },
+    {
+      "prim": "turnHead",
+      "mapsTo": "Head/Neck"
+    },
+    {
+      "prim": "gazeAt",
+      "mapsTo": "lookAt / eye morph"
+    },
+    {
+      "prim": "flowStep",
+      "mapsTo": "MAYA.flow.run(stepId)"
+    }
+  ]
+}

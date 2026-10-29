@@ -1,0 +1,27 @@
+# Dependencies & build
+node_modules/
+dist/
+*.log
+.DS_Store
+npm-debug.log*
+
+# Local / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editor / OS
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local MCP host configs (never commit real paths)
+.cursor/
+mcp.local.json
+
+# Scratch
+_tmp/
+*.tgz

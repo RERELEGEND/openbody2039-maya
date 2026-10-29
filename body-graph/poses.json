@@ -1,0 +1,280 @@
+{
+  "meta": {
+    "generatedAt": "2026-10-29T09:13:12.950Z",
+    "source": "avatar-source/src/jointDefs.js → STANDING_POSES"
+  },
+  "poses": {
+    "tpose": {
+      "id": "tpose",
+      "label": "T-pose",
+      "hint": "绑定位姿｜肩外展≈90°（行业绑定参考）",
+      "source": "bind / Mixamo-T 类绑定惯例",
+      "alive": false,
+      "deltas": {}
+    },
+    "anatomical": {
+      "id": "anatomical",
+      "label": "解剖站立",
+      "hint": "本模型实测贴身站姿（文献肩外展≈4.5°/肘≈15.5°仅作参考）",
+      "source": "用户对本 GLB 实测调参；文献参考 Matsumura et al., JOSR 2022",
+      "alive": false,
+      "deltas": {
+        "LeftArm": {
+          "x": 75.5,
+          "y": -8.5,
+          "z": 0
+        },
+        "RightArm": {
+          "x": 76.5,
+          "y": 9.5,
+          "z": -6.5
+        },
+        "LeftForeArm": {
+          "x": 14.5,
+          "y": 0.5,
+          "z": 6.5
+        },
+        "RightForeArm": {
+          "x": 14.5,
+          "y": -0.5,
+          "z": -6.5
+        },
+        "Head": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "Neck": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+    "aPose": {
+      "id": "aPose",
+      "label": "A-pose",
+      "hint": "自 T-pose 下垂≈45°（MoCap/游戏行业常用）",
+      "source": "MoCap Online Skeleton Guide — A-Pose ≈ 45° down from T-pose",
+      "alive": false,
+      "deltas": {
+        "LeftArm": {
+          "x": 45,
+          "y": 0,
+          "z": 0
+        },
+        "RightArm": {
+          "x": 45,
+          "y": 0,
+          "z": 0
+        },
+        "LeftForeArm": {
+          "x": 10,
+          "y": 0,
+          "z": 0
+        },
+        "RightForeArm": {
+          "x": 10,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+    "armAtSideElbow90": {
+      "id": "armAtSideElbow90",
+      "label": "贴身屈肘90°",
+      "hint": "解剖贴身臂 + 肘屈曲90°（VALD 测试起始姿）",
+      "source": "VALD DynaMo Lite — Shoulder Strength standing protocols",
+      "alive": false,
+      "deltas": {
+        "LeftArm": {
+          "x": 75.5,
+          "y": -8.5,
+          "z": 0
+        },
+        "RightArm": {
+          "x": 76.5,
+          "y": 9.5,
+          "z": -6.5
+        },
+        "LeftForeArm": {
+          "x": 90,
+          "y": 0.5,
+          "z": 6.5
+        },
+        "RightForeArm": {
+          "x": 90,
+          "y": -0.5,
+          "z": -6.5
+        }
+      }
+    },
+    "abduct90Elbow90": {
+      "id": "abduct90Elbow90",
+      "label": "外展90°屈肘90°",
+      "hint": "肩外展90°+肘屈90°（HumanTrak / 临床 ROM 常用）",
+      "source": "VALD HumanTrak — Shoulder ER @ 90° abduction start position",
+      "alive": false,
+      "deltas": {
+        "LeftArm": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "RightArm": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "LeftForeArm": {
+          "x": 90,
+          "y": 0,
+          "z": 0
+        },
+        "RightForeArm": {
+          "x": 90,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+    "speakGesture": {
+      "id": "speakGesture",
+      "label": "单侧示意",
+      "hint": "左解剖站立；右肩外展≈40°+肘90°（功能手势协议）",
+      "source": "支撑侧: JOSR 2022；示意侧: VALD 90° elbow + moderate abduction",
+      "alive": false,
+      "deltas": {
+        "LeftArm": {
+          "x": 75.5,
+          "y": -8.5,
+          "z": 0
+        },
+        "LeftForeArm": {
+          "x": 14.5,
+          "y": 0.5,
+          "z": 6.5
+        },
+        "RightArm": {
+          "x": 50,
+          "y": 9.5,
+          "z": -6.5
+        },
+        "RightForeArm": {
+          "x": 90,
+          "y": -0.5,
+          "z": -6.5
+        },
+        "Head": {
+          "x": 0,
+          "y": -10,
+          "z": 0
+        },
+        "Neck": {
+          "x": 0,
+          "y": -5,
+          "z": 0
+        }
+      }
+    },
+    "newStand": {
+      "id": "newStand",
+      "label": "NEW_站姿",
+      "hint": "生活向自然站｜站距收窄·软膝·臂下垂留缝·脚尖微外展·大按钮启动态（探视/摆动）",
+      "source": "用户参考图正面轮廓识别 → 本 GLB 关节轴向换算",
+      "alive": true,
+      "deltas": {
+        "Hips": {
+          "x": 0.5,
+          "y": -2,
+          "z": 1.5
+        },
+        "Spine": {
+          "x": -1.5,
+          "y": 1,
+          "z": -0.5
+        },
+        "Spine1": {
+          "x": -0.5,
+          "y": 0.5,
+          "z": 0
+        },
+        "Spine2": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "LeftShoulder": {
+          "x": 2,
+          "y": 0,
+          "z": -2
+        },
+        "LeftArm": {
+          "x": 71,
+          "y": -6,
+          "z": -4
+        },
+        "LeftForeArm": {
+          "x": 12,
+          "y": 0.5,
+          "z": 4
+        },
+        "LeftHand": {
+          "x": 6,
+          "y": 0,
+          "z": -4
+        },
+        "RightShoulder": {
+          "x": 2,
+          "y": 0,
+          "z": 2
+        },
+        "RightArm": {
+          "x": 73,
+          "y": 8,
+          "z": -11
+        },
+        "RightForeArm": {
+          "x": 11,
+          "y": -0.5,
+          "z": -4
+        },
+        "RightHand": {
+          "x": 6,
+          "y": 0,
+          "z": 4
+        },
+        "LeftUpLeg": {
+          "x": 2.5,
+          "y": 4,
+          "z": 2
+        },
+        "LeftLeg": {
+          "x": -7,
+          "y": 0,
+          "z": 0
+        },
+        "LeftFoot": {
+          "x": 2,
+          "y": 4,
+          "z": 1
+        },
+        "RightUpLeg": {
+          "x": -1,
+          "y": -4,
+          "z": 2
+        },
+        "RightLeg": {
+          "x": -2,
+          "y": 0,
+          "z": 0
+        },
+        "RightFoot": {
+          "x": 2,
+          "y": -4,
+          "z": -1
+        }
+      }
+    }
+  }
+}

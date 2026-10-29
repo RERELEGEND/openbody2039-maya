@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "openbody2039-maya": {
+      "command": "node",
+      "args": ["REPLACE_WITH_ABS_PATH/OpenBody2039_MAYA/mcp/server.js"],
+      "env": {
+        "OPENBODY_WS_URL": "ws://127.0.0.1:8787",
+        "OPENBODY_CLIENT_ID": "openbody-mcp"
+      }
+    }
+  }
+}

@@ -1,0 +1,1653 @@
+{
+  "meta": {
+    "generatedAt": "2026-10-29T09:13:12.945Z",
+    "source": "avatar-source/src/jointDefs.js",
+    "avatarSrcRoot": "avatar-source",
+    "counts": {
+      "jointDefsNamed": 33,
+      "verifiedProbeJoints": 73,
+      "exportedBones": 73,
+      "runtimeSkinnedBonesNote": 73
+    },
+    "units": "degrees, local Euler delta vs bind pose",
+    "note": "执行时只写运行时存在的骨名；知识面以实测+JOINT_DEFS为准"
+  },
+  "fingerRule": {
+    "prefixes": [
+      "LeftHandThumb",
+      "LeftHandIndex",
+      "LeftHandMiddle",
+      "LeftHandRing",
+      "LeftHandPinky",
+      "RightHandThumb",
+      "RightHandIndex",
+      "RightHandMiddle",
+      "RightHandRing",
+      "RightHandPinky"
+    ],
+    "defaultLimit": {
+      "label": "LeftHandIndex1",
+      "role": "屈伸为主",
+      "rx": {
+        "min": -10,
+        "max": 90
+      },
+      "ry": {
+        "min": -20,
+        "max": 20
+      },
+      "rz": {
+        "min": -25,
+        "max": 25
+      }
+    }
+  },
+  "bones": [
+    {
+      "name": "Head",
+      "parent": "Neck2",
+      "label": "头 Head",
+      "role": "实测：+RX低头 −RX仰头｜+RY向角色右转｜+RZ向角色左倾",
+      "limits": {
+        "rx": {
+          "min": -45,
+          "max": 45
+        },
+        "ry": {
+          "min": -80,
+          "max": 80
+        },
+        "rz": {
+          "min": -40,
+          "max": 40
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "HeadTop_End",
+      "parent": "Head",
+      "label": "头顶末端",
+      "role": "辅助端点，一般不拧",
+      "limits": {
+        "rx": {
+          "min": -5,
+          "max": 5
+        },
+        "ry": {
+          "min": -5,
+          "max": 5
+        },
+        "rz": {
+          "min": -5,
+          "max": 5
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "Hips",
+      "parent": null,
+      "label": "髋根 Hips",
+      "role": "整身根；RX 前后倾，RY 左右转，RZ 左右倾",
+      "limits": {
+        "rx": {
+          "min": -30,
+          "max": 30
+        },
+        "ry": {
+          "min": -45,
+          "max": 45
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftArm",
+      "parent": "LeftShoulder",
+      "label": "左上臂",
+      "role": "垂臂基线见 anatomical；前后摆用RZ（+前/−后）；勿用RX摆臂",
+      "limits": {
+        "rx": {
+          "min": -90,
+          "max": 130
+        },
+        "ry": {
+          "min": -60,
+          "max": 90
+        },
+        "rz": {
+          "min": -90,
+          "max": 90
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftEye",
+      "parent": "Head",
+      "label": "左眼",
+      "role": "眼球朝向（小幅）",
+      "limits": {
+        "rx": {
+          "min": -25,
+          "max": 25
+        },
+        "ry": {
+          "min": -35,
+          "max": 35
+        },
+        "rz": {
+          "min": -10,
+          "max": 10
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftFoot",
+      "parent": "LeftLeg",
+      "label": "左脚",
+      "role": "踝",
+      "limits": {
+        "rx": {
+          "min": -40,
+          "max": 40
+        },
+        "ry": {
+          "min": -25,
+          "max": 25
+        },
+        "rz": {
+          "min": -30,
+          "max": 30
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftForeArm",
+      "parent": "LeftArm",
+      "label": "左前臂",
+      "role": "实测：+RX 屈肘（前臂下折）",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 140
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -20,
+          "max": 20
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftForeArm1",
+      "parent": "LeftForeArm",
+      "label": "左前臂段1",
+      "role": "前臂细分",
+      "limits": {
+        "rx": {
+          "min": -15,
+          "max": 40
+        },
+        "ry": {
+          "min": -25,
+          "max": 25
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftForeArm2",
+      "parent": "LeftForeArm1",
+      "label": "左前臂段2",
+      "role": "近腕前臂",
+      "limits": {
+        "rx": {
+          "min": -15,
+          "max": 30
+        },
+        "ry": {
+          "min": -25,
+          "max": 25
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftHand",
+      "parent": "LeftForeArm2",
+      "label": "左手腕",
+      "role": "腕屈伸/偏转",
+      "limits": {
+        "rx": {
+          "min": -60,
+          "max": 60
+        },
+        "ry": {
+          "min": -40,
+          "max": 40
+        },
+        "rz": {
+          "min": -50,
+          "max": 50
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftHandIndex1",
+      "parent": "LeftHand",
+      "label": "LeftHandIndex1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandIndex2",
+      "parent": "LeftHandIndex1",
+      "label": "LeftHandIndex2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandIndex3",
+      "parent": "LeftHandIndex2",
+      "label": "LeftHandIndex3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandIndex4",
+      "parent": "LeftHandIndex3",
+      "label": "LeftHandIndex4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandMiddle1",
+      "parent": "LeftHand",
+      "label": "LeftHandMiddle1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandMiddle2",
+      "parent": "LeftHandMiddle1",
+      "label": "LeftHandMiddle2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandMiddle3",
+      "parent": "LeftHandMiddle2",
+      "label": "LeftHandMiddle3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandMiddle4",
+      "parent": "LeftHandMiddle3",
+      "label": "LeftHandMiddle4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandPinky1",
+      "parent": "LeftHand",
+      "label": "LeftHandPinky1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandPinky2",
+      "parent": "LeftHandPinky1",
+      "label": "LeftHandPinky2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandPinky3",
+      "parent": "LeftHandPinky2",
+      "label": "LeftHandPinky3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandPinky4",
+      "parent": "LeftHandPinky3",
+      "label": "LeftHandPinky4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandRing1",
+      "parent": "LeftHand",
+      "label": "LeftHandRing1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandRing2",
+      "parent": "LeftHandRing1",
+      "label": "LeftHandRing2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandRing3",
+      "parent": "LeftHandRing2",
+      "label": "LeftHandRing3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandRing4",
+      "parent": "LeftHandRing3",
+      "label": "LeftHandRing4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandThumb1",
+      "parent": "LeftHand",
+      "label": "LeftHandThumb1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandThumb2",
+      "parent": "LeftHandThumb1",
+      "label": "LeftHandThumb2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandThumb3",
+      "parent": "LeftHandThumb2",
+      "label": "LeftHandThumb3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftHandThumb4",
+      "parent": "LeftHandThumb3",
+      "label": "LeftHandThumb4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "LeftLeg",
+      "parent": "LeftUpLeg",
+      "label": "左小腿",
+      "role": "膝屈（通常单向）",
+      "limits": {
+        "rx": {
+          "min": -140,
+          "max": 5
+        },
+        "ry": {
+          "min": -15,
+          "max": 15
+        },
+        "rz": {
+          "min": -15,
+          "max": 15
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftShoulder",
+      "parent": "Spine2",
+      "label": "左锁骨",
+      "role": "耸肩/内收肩带",
+      "limits": {
+        "rx": {
+          "min": -20,
+          "max": 30
+        },
+        "ry": {
+          "min": -25,
+          "max": 25
+        },
+        "rz": {
+          "min": -30,
+          "max": 30
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftToeBase",
+      "parent": "LeftFoot",
+      "label": "左脚趾",
+      "role": "脚趾弯曲",
+      "limits": {
+        "rx": {
+          "min": -40,
+          "max": 20
+        },
+        "ry": {
+          "min": -10,
+          "max": 10
+        },
+        "rz": {
+          "min": -10,
+          "max": 10
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftToe_End",
+      "parent": "LeftToeBase",
+      "label": "左趾末端",
+      "role": "端点",
+      "limits": {
+        "rx": {
+          "min": -5,
+          "max": 5
+        },
+        "ry": {
+          "min": -5,
+          "max": 5
+        },
+        "rz": {
+          "min": -5,
+          "max": 5
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "LeftUpLeg",
+      "parent": "Hips",
+      "label": "左大腿",
+      "role": "侧面实测：+RX向前迈，−RX向后",
+      "limits": {
+        "rx": {
+          "min": -30,
+          "max": 110
+        },
+        "ry": {
+          "min": -40,
+          "max": 40
+        },
+        "rz": {
+          "min": -45,
+          "max": 45
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "Neck",
+      "parent": "Spine2",
+      "label": "颈根 Neck",
+      "role": "颈部基底",
+      "limits": {
+        "rx": {
+          "min": -35,
+          "max": 35
+        },
+        "ry": {
+          "min": -50,
+          "max": 50
+        },
+        "rz": {
+          "min": -30,
+          "max": 30
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "Neck1",
+      "parent": "Neck",
+      "label": "颈中 Neck1",
+      "role": "颈中段",
+      "limits": {
+        "rx": {
+          "min": -30,
+          "max": 30
+        },
+        "ry": {
+          "min": -40,
+          "max": 40
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "Neck2",
+      "parent": "Neck1",
+      "label": "颈上 Neck2",
+      "role": "近头颈段",
+      "limits": {
+        "rx": {
+          "min": -25,
+          "max": 25
+        },
+        "ry": {
+          "min": -35,
+          "max": 35
+        },
+        "rz": {
+          "min": -20,
+          "max": 20
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightArm",
+      "parent": "RightShoulder",
+      "label": "右上臂",
+      "role": "垂臂+RX；前后摆用RZ（−前/+后，与左镜像）",
+      "limits": {
+        "rx": {
+          "min": -90,
+          "max": 130
+        },
+        "ry": {
+          "min": -90,
+          "max": 60
+        },
+        "rz": {
+          "min": -90,
+          "max": 90
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightEye",
+      "parent": "Head",
+      "label": "右眼",
+      "role": "眼球朝向（小幅）",
+      "limits": {
+        "rx": {
+          "min": -25,
+          "max": 25
+        },
+        "ry": {
+          "min": -35,
+          "max": 35
+        },
+        "rz": {
+          "min": -10,
+          "max": 10
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightFoot",
+      "parent": "RightLeg",
+      "label": "右脚",
+      "role": "踝",
+      "limits": {
+        "rx": {
+          "min": -40,
+          "max": 40
+        },
+        "ry": {
+          "min": -25,
+          "max": 25
+        },
+        "rz": {
+          "min": -30,
+          "max": 30
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightForeArm",
+      "parent": "RightArm",
+      "label": "右前臂",
+      "role": "实测：+RX 屈肘（前臂下折）",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 140
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -20,
+          "max": 20
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightForeArm1",
+      "parent": "RightForeArm",
+      "label": "右前臂段1",
+      "role": "前臂细分",
+      "limits": {
+        "rx": {
+          "min": -15,
+          "max": 40
+        },
+        "ry": {
+          "min": -25,
+          "max": 25
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightForeArm2",
+      "parent": "RightForeArm1",
+      "label": "右前臂段2",
+      "role": "近腕前臂",
+      "limits": {
+        "rx": {
+          "min": -15,
+          "max": 30
+        },
+        "ry": {
+          "min": -25,
+          "max": 25
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightHand",
+      "parent": "RightForeArm2",
+      "label": "右手腕",
+      "role": "腕屈伸/偏转",
+      "limits": {
+        "rx": {
+          "min": -60,
+          "max": 60
+        },
+        "ry": {
+          "min": -40,
+          "max": 40
+        },
+        "rz": {
+          "min": -50,
+          "max": 50
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightHandIndex1",
+      "parent": "RightHand",
+      "label": "RightHandIndex1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandIndex2",
+      "parent": "RightHandIndex1",
+      "label": "RightHandIndex2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandIndex3",
+      "parent": "RightHandIndex2",
+      "label": "RightHandIndex3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandIndex4",
+      "parent": "RightHandIndex3",
+      "label": "RightHandIndex4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandMiddle1",
+      "parent": "RightHand",
+      "label": "RightHandMiddle1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandMiddle2",
+      "parent": "RightHandMiddle1",
+      "label": "RightHandMiddle2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandMiddle3",
+      "parent": "RightHandMiddle2",
+      "label": "RightHandMiddle3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandMiddle4",
+      "parent": "RightHandMiddle3",
+      "label": "RightHandMiddle4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandPinky1",
+      "parent": "RightHand",
+      "label": "RightHandPinky1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandPinky2",
+      "parent": "RightHandPinky1",
+      "label": "RightHandPinky2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandPinky3",
+      "parent": "RightHandPinky2",
+      "label": "RightHandPinky3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandPinky4",
+      "parent": "RightHandPinky3",
+      "label": "RightHandPinky4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandRing1",
+      "parent": "RightHand",
+      "label": "RightHandRing1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandRing2",
+      "parent": "RightHandRing1",
+      "label": "RightHandRing2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandRing3",
+      "parent": "RightHandRing2",
+      "label": "RightHandRing3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandRing4",
+      "parent": "RightHandRing3",
+      "label": "RightHandRing4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandThumb1",
+      "parent": "RightHand",
+      "label": "RightHandThumb1",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandThumb2",
+      "parent": "RightHandThumb1",
+      "label": "RightHandThumb2",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandThumb3",
+      "parent": "RightHandThumb2",
+      "label": "RightHandThumb3",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightHandThumb4",
+      "parent": "RightHandThumb3",
+      "label": "RightHandThumb4",
+      "role": "屈伸为主",
+      "limits": {
+        "rx": {
+          "min": -10,
+          "max": 90
+        },
+        "ry": {
+          "min": -20,
+          "max": 20
+        },
+        "rz": {
+          "min": -25,
+          "max": 25
+        }
+      },
+      "inJointDefs": false,
+      "verified": true
+    },
+    {
+      "name": "RightLeg",
+      "parent": "RightUpLeg",
+      "label": "右小腿",
+      "role": "膝屈",
+      "limits": {
+        "rx": {
+          "min": -140,
+          "max": 5
+        },
+        "ry": {
+          "min": -15,
+          "max": 15
+        },
+        "rz": {
+          "min": -15,
+          "max": 15
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightShoulder",
+      "parent": "Spine2",
+      "label": "右锁骨",
+      "role": "耸肩/内收肩带",
+      "limits": {
+        "rx": {
+          "min": -20,
+          "max": 30
+        },
+        "ry": {
+          "min": -25,
+          "max": 25
+        },
+        "rz": {
+          "min": -30,
+          "max": 30
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightToeBase",
+      "parent": "RightFoot",
+      "label": "右脚趾",
+      "role": "脚趾弯曲",
+      "limits": {
+        "rx": {
+          "min": -40,
+          "max": 20
+        },
+        "ry": {
+          "min": -10,
+          "max": 10
+        },
+        "rz": {
+          "min": -10,
+          "max": 10
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightToe_End",
+      "parent": "RightToeBase",
+      "label": "右趾末端",
+      "role": "端点",
+      "limits": {
+        "rx": {
+          "min": -5,
+          "max": 5
+        },
+        "ry": {
+          "min": -5,
+          "max": 5
+        },
+        "rz": {
+          "min": -5,
+          "max": 5
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "RightUpLeg",
+      "parent": "Hips",
+      "label": "右大腿",
+      "role": "侧面实测：+RX向前迈，−RX向后（与左同号）",
+      "limits": {
+        "rx": {
+          "min": -30,
+          "max": 110
+        },
+        "ry": {
+          "min": -40,
+          "max": 40
+        },
+        "rz": {
+          "min": -45,
+          "max": 45
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "Spine",
+      "parent": "Hips",
+      "label": "腰 Spine",
+      "role": "下腰弯曲/扭转",
+      "limits": {
+        "rx": {
+          "min": -25,
+          "max": 35
+        },
+        "ry": {
+          "min": -35,
+          "max": 35
+        },
+        "rz": {
+          "min": -20,
+          "max": 20
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "Spine1",
+      "parent": "Spine",
+      "label": "胸下 Spine1",
+      "role": "中段脊柱",
+      "limits": {
+        "rx": {
+          "min": -20,
+          "max": 30
+        },
+        "ry": {
+          "min": -30,
+          "max": 30
+        },
+        "rz": {
+          "min": -18,
+          "max": 18
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    },
+    {
+      "name": "Spine2",
+      "parent": "Spine1",
+      "label": "胸上 Spine2",
+      "role": "上胸/肩带连接",
+      "limits": {
+        "rx": {
+          "min": -20,
+          "max": 30
+        },
+        "ry": {
+          "min": -35,
+          "max": 35
+        },
+        "rz": {
+          "min": -18,
+          "max": 18
+        }
+      },
+      "inJointDefs": true,
+      "verified": true
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "name": "openbody2039-maya",
+  "version": "0.3.1",
+  "description": "OpenBody2039 MAYA — universal MCP server for avatar body knowledge and intent-level control (stdio, IDE-agnostic)",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "openbody2039-maya": "./mcp/bin.js"
+  },
+  "main": "./mcp/server.js",
+  "exports": {
+    ".": "./mcp/server.js",
+    "./tools": "./mcp/tools.js",
+    "./config": "./mcp/config.js"
+  },
+  "files": [
+    "mcp/**/*.js",
+    "mcp/clients.example.json",
+    "brain/**/*.js",
+    "transport/**/*.js",
+    "body-graph/**",
+    "avatar-source/**",
+    "generator/**/*.mjs",
+    "docs/**",
+    "skill/**",
+    "tools/sync-avatar-source.sh",
+    "README.md",
+    "ROADMAP.md",
+    "RELEASE_NOTES.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "scripts": {
+    "export:graph": "node generator/export-body-graph.mjs",
+    "sync:avatar-source": "bash tools/sync-avatar-source.sh",
+    "install:skill": "node generator/install-skill.mjs",
+    "bridge": "node transport/wsServer.js",
+    "mcp": "node mcp/server.js",
+    "smoke:p1": "node generator/smoke-p1.mjs",
+    "smoke:p5": "node generator/smoke-p5.mjs",
+    "test:intent": "node -e \"import('./brain/planner.js').then(m=>console.log(JSON.stringify(m.planFromIntent('挥右手打招呼'),null,2)))\"",
+    "test:mcp-offline": "node generator/smoke-mcp-offline.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "openbody2039",
+    "maya",
+    "avatar",
+    "stdio"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2",
+    "ws": "^8.18.3"
+  }
+}

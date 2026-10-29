@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAYA · 给 AI Agent 一个身体</title>
+    <meta
+      name="description"
+      content="OpenBody2039 MAYA — 给 AI Agent 一个身体。通用 MCP：关节知识、意图驱动、像人一样动起来。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0b1014;
+        --ink-2: #141c24;
+        --fog: #d7e0e8;
+        --mute: #8a9aab;
+        --pulse: #3dffa8;
+        --ember: #ff7a45;
+        --line: rgba(215, 224, 232, 0.14);
+        --font-display: "Syne", sans-serif;
+        --font-body: "Instrument Sans", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--fog);
+        font-family: var(--font-body);
+        background: var(--ink);
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* —— atmosphere —— */
+      .sky {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background:
+          radial-gradient(900px 520px at 78% 12%, rgba(61, 255, 168, 0.16), transparent 55%),
+          radial-gradient(700px 480px at 12% 88%, rgba(255, 122, 69, 0.12), transparent 50%),
+          linear-gradient(165deg, #070a0d 0%, #101820 46%, #0b1014 100%);
+      }
+
+      .grain {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.35;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+        mix-blend-mode: soft-light;
+      }
+
+      .mesh {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(215, 224, 232, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(215, 224, 232, 0.05) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: radial-gradient(circle at 70% 35%, black 0%, transparent 68%);
+        animation: drift 28s linear infinite;
+      }
+
+      @keyframes drift {
+        from {
+          background-position: 0 0, 0 0;
+        }
+        to {
+          background-position: 72px 36px, 36px 72px;
+        }
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulseRing {
+        0% {
+          transform: scale(0.92);
+          opacity: 0.55;
+        }
+        70% {
+          transform: scale(1.18);
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* —— shell —— */
+      .wrap {
+        width: min(1120px, calc(100% - 2.5rem));
+        margin-inline: auto;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 0 0;
+        animation: rise 0.7s ease both;
+      }
+
+      .mark {
+        font-family: var(--font-display);
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        font-size: 1rem;
+      }
+
+      .mark span {
+        color: var(--pulse);
+      }
+
+      nav {
+        display: flex;
+        gap: 1.25rem;
+        align-items: center;
+        color: var(--mute);
+        font-size: 0.92rem;
+      }
+
+      nav a:hover {
+        color: var(--fog);
+      }
+
+      /* —— hero —— */
+      .hero {
+        position: relative;
+        min-height: calc(100vh - 4rem);
+        display: grid;
+        align-content: center;
+        padding: 4rem 0 5rem;
+        isolation: isolate;
+      }
+
+      .hero .mesh {
+        z-index: -1;
+      }
+
+      .brand {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: clamp(4.6rem, 16vw, 9.5rem);
+        line-height: 0.88;
+        letter-spacing: -0.04em;
+        margin: 0 0 1.25rem;
+        animation: rise 0.85s 0.05s ease both;
+      }
+
+      .brand em {
+        font-style: normal;
+        background: linear-gradient(120deg, var(--fog) 20%, var(--pulse) 70%, var(--ember) 110%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .headline {
+        max-width: 18ch;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(1.55rem, 3.6vw, 2.35rem);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin: 0 0 0.9rem;
+        animation: rise 0.85s 0.12s ease both;
+      }
+
+      .lede {
+        max-width: 36rem;
+        color: var(--mute);
+        font-size: 1.08rem;
+        margin: 0 0 2rem;
+        animation: rise 0.85s 0.18s ease both;
+      }
+
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        animation: rise 0.85s 0.24s ease both;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.85rem;
+        padding: 0 1.2rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: var(--pulse);
+        color: #06110c;
+      }
+
+      .btn-ghost {
+        border-color: var(--line);
+        background: rgba(20, 28, 36, 0.55);
+        backdrop-filter: blur(8px);
+      }
+
+      .btn-ghost:hover {
+        border-color: rgba(61, 255, 168, 0.45);
+      }
+
+      .signal {
+        position: absolute;
+        right: 4%;
+        top: 28%;
+        width: min(280px, 36vw);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 1px solid rgba(61, 255, 168, 0.25);
+        display: grid;
+        place-items: center;
+        animation: rise 1s 0.3s ease both;
+        pointer-events: none;
+      }
+
+      .signal::before,
+      .signal::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 1px solid rgba(61, 255, 168, 0.35);
+        animation: pulseRing 3.2s ease-out infinite;
+      }
+
+      .signal::after {
+        animation-delay: 1.1s;
+      }
+
+      .signal-core {
+        width: 42%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 35% 30%, #fff8, transparent 40%),
+          radial-gradient(circle at 50% 55%, var(--pulse), transparent 68%),
+          radial-gradient(circle at 70% 70%, var(--ember), transparent 55%);
+        filter: blur(0.2px);
+        box-shadow: 0 0 60px rgba(61, 255, 168, 0.35);
+      }
+
+      /* —— sections —— */
+      section {
+        padding: 4.5rem 0;
+        border-top: 1px solid var(--line);
+      }
+
+      section h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 0.65rem;
+      }
+
+      section .sub {
+        color: var(--mute);
+        max-width: 38rem;
+        margin: 0 0 2rem;
+      }
+
+      .story {
+        display: grid;
+        gap: 1.25rem;
+        max-width: 40rem;
+        font-size: 1.08rem;
+      }
+
+      .story p {
+        margin: 0;
+        color: #b7c4d0;
+      }
+
+      .story strong {
+        color: var(--fog);
+        font-weight: 600;
+      }
+
+      .flow {
+        display: grid;
+        gap: 0.85rem;
+        counter-reset: step;
+      }
+
+      .flow li {
+        list-style: none;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        align-items: start;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .flow li::before {
+        counter-increment: step;
+        content: counter(step, decimal-leading-zero);
+        font-family: var(--font-display);
+        font-weight: 700;
+        color: var(--pulse);
+        font-size: 1.1rem;
+        line-height: 1.4;
+      }
+
+      .flow h3 {
+        margin: 0 0 0.25rem;
+        font-size: 1.05rem;
+      }
+
+      .flow p {
+        margin: 0;
+        color: var(--mute);
+        font-size: 0.95rem;
+      }
+
+      .code {
+        margin-top: 1.5rem;
+        padding: 1.1rem 1.2rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(8, 12, 16, 0.72);
+        overflow-x: auto;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.84rem;
+        color: #c9f7e1;
+        line-height: 1.55;
+      }
+
+      footer {
+        padding: 2.5rem 0 3rem;
+        border-top: 1px solid var(--line);
+        color: var(--mute);
+        font-size: 0.9rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        justify-content: space-between;
+      }
+
+      @media (max-width: 720px) {
+        nav .hide-sm {
+          display: none;
+        }
+
+        .signal {
+          opacity: 0.35;
+          top: 12%;
+          right: -8%;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 3.5rem;
+          padding-bottom: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sky" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <header>
+        <a class="mark" href="#top">OpenBody<span>2039</span></a>
+        <nav>
+          <a class="hide-sm" href="#why">为什么</a>
+          <a class="hide-sm" href="#how">怎么用</a>
+          <a href="https://github.com/RERELEGEND/openbody2039-maya">GitHub</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-label="Hero">
+          <div class="mesh" aria-hidden="true"></div>
+          <div class="signal" aria-hidden="true"><div class="signal-core"></div></div>
+
+          <p class="brand"><em>MAYA</em></p>
+          <h1 class="headline">给 AI Agent 一个身体</h1>
+          <p class="lede">
+            让智能体不只会说话——她能挥手、点头、站立、表情变化。
+            OpenBody2039 把 <strong style="color: var(--fog)">身体知识</strong> 与
+            <strong style="color: var(--fog)">意图控制</strong> 做成通用 MCP，
+            任何 Agent 宿主都能接上虚拟人 <em style="color: var(--pulse); font-style: normal">MAYA</em>。
+          </p>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://github.com/RERELEGEND/openbody2039-maya">打开 GitHub</a>
+            <a class="btn btn-ghost" href="../MCP.md">读 MCP 文档</a>
+          </div>
+        </section>
+
+        <section id="why">
+          <h2>Agent 有脑，也该有身</h2>
+          <p class="sub">语言模型擅长推理；缺的是可感知、可约束、可表演的身体层。</p>
+          <div class="story">
+            <p>
+              <strong>MAYA</strong> 不是又一个聊天皮肤。她有关节限位、实测轴语义、表情预设与站姿图谱——
+              Agent 先<strong>读懂身体</strong>，再<strong>用人话驱动</strong>。
+            </p>
+            <p>
+              挥手时仍可眨眼与微摆：控制是<strong>分层叠加</strong>的，像人，而不是木偶定格。
+            </p>
+            <p>
+              协议走标准 <strong>MCP stdio</strong>，不绑某一家 IDE。知识包离线可读；活体控制只需本地桥 + 兼容 viewer。
+            </p>
+          </div>
+        </section>
+
+        <section id="how">
+          <h2>三步，让 Agent 长出身</h2>
+          <p class="sub">发现 → 查询 → 意图。优先原语，而不是逐关节拧角。</p>
+          <ol class="flow">
+            <li>
+              <div>
+                <h3>发现 MAYA</h3>
+                <p>调用 <code>openbody_info</code>，拿到能力清单与推荐流程。</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>读身体图谱</h3>
+                <p><code>body_lookup("RightArm")</code> 或 Resources <code>openbody://body-graph/*</code>——骨名与限位不靠猜。</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>意图驱动</h3>
+                <p><code>intent_do("挥右手打招呼")</code> → 规划原语 → 平滑播放 → <code>control_release</code>。</p>
+              </div>
+            </li>
+          </ol>
+          <pre class="code" aria-label="MCP host config example">{
+  "mcpServers": {
+    "openbody2039-maya": {
+      "command": "node",
+      "args": ["./mcp/server.js"],
+      "env": { "OPENBODY_WS_URL": "ws://127.0.0.1:8787" }
+    }
+  }
+}</pre>
+        </section>
+      </main>
+
+      <footer>
+        <span>MAYA · OpenBody2039 · MIT</span>
+        <span>给 AI Agent 一个身体</span>
+      </footer>
+    </div>
+  </body>
+</html>
