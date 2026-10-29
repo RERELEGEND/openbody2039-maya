@@ -3,6 +3,14 @@
 > **Give AI Agents a Body.** Her name is **MAYA**.  
 > Landing: [live](https://rerelegend.github.io/openbody2039-maya/) · [source](docs/index.html) · [repo](https://github.com/RERELEGEND/openbody2039-maya)
 
+<p align="center">
+  <img
+    src="docs/assets/maya-sit-stand.jpg"
+    alt="MAYA — sit and stand preview"
+    width="920"
+  />
+</p>
+
 Universal **Model Context Protocol** server for avatar **body knowledge** and **intent-level control**.
 
 - **IDE-agnostic** stdio MCP (Claude Desktop, Cursor, Cline, Continue, custom agents, …)
