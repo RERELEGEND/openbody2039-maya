@@ -6,12 +6,12 @@
     <title>MAYA · Give AI Agents a Body</title>
     <meta
       name="description"
-      content="OpenBody2039 MAYA — Give AI Agents a Body. Universal MCP for joint knowledge, intent-driven motion, and human-like avatar control."
+      content="MAYA 3.0 — end-to-end IoT agent. Give AI Agents a Body via OpenBody2039 MCP. Blog: www.ura2039.xyz"
     />
-    <meta property="og:title" content="MAYA · Give AI Agents a Body" />
+    <meta property="og:title" content="MAYA 3.0 · Give AI Agents a Body" />
     <meta
       property="og:description"
-      content="A universal MCP that gives AI agents a body named MAYA."
+      content="MAYA 3.0 end-to-end IoT agent — OpenBody2039 MCP body layer. Read more at www.ura2039.xyz"
     />
     <meta property="og:image" content="assets/maya-sit-stand.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -353,6 +353,66 @@
         line-height: 1.55;
       }
 
+      .pillars {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .pillar {
+        padding: 1.15rem 1.2rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(16, 22, 29, 0.55);
+      }
+
+      .pillar h3 {
+        margin: 0 0 0.4rem;
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+      }
+
+      .pillar p {
+        margin: 0;
+        color: var(--mute);
+        font-size: 0.92rem;
+      }
+
+      .pillar a {
+        color: var(--pulse);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .banner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem 1.5rem;
+        padding: 1.2rem 1.35rem;
+        border: 1px solid rgba(61, 255, 168, 0.28);
+        border-radius: 16px;
+        background: linear-gradient(
+          120deg,
+          rgba(61, 255, 168, 0.08),
+          rgba(255, 122, 69, 0.06)
+        );
+      }
+
+      .banner strong {
+        color: var(--fog);
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+      }
+
+      .banner p {
+        margin: 0.25rem 0 0;
+        color: var(--mute);
+        font-size: 0.92rem;
+        max-width: 36rem;
+      }
+
       footer {
         width: min(1200px, calc(100% - 2rem));
         margin-inline: auto;
@@ -366,7 +426,15 @@
         justify-content: space-between;
       }
 
+      footer a {
+        color: var(--pulse);
+      }
+
       @media (max-width: 900px) {
+        .pillars {
+          grid-template-columns: 1fr;
+        }
+
         .hero {
           grid-template-columns: 1fr;
           min-height: auto;
@@ -399,10 +467,11 @@
     <div class="grain" aria-hidden="true"></div>
 
     <header class="top">
-      <a class="mark" href="#top">OpenBody<span>2039</span></a>
+      <a class="mark" href="#top">MAYA<span>3.0</span></a>
       <nav>
         <a class="hide-sm" href="#why">Why</a>
-        <a class="hide-sm" href="#how">How</a>
+        <a class="hide-sm" href="#stack">MAYA 3.0</a>
+        <a href="https://www.ura2039.xyz" rel="noopener">ura2039.xyz</a>
         <a href="https://github.com/RERELEGEND/openbody2039-maya">GitHub</a>
       </nav>
     </header>
@@ -410,23 +479,24 @@
     <main id="top">
       <section class="hero" aria-label="Hero">
         <div class="hero-copy">
-          <p class="brand"><em>MAYA</em></p>
+          <p class="brand"><em>MAYA 3.0</em></p>
           <h1 class="headline">Give AI Agents a Body</h1>
           <p class="lede">
-            Agents already think. MAYA lets them move — wave, nod, stand, and express —
-            through a universal MCP of body knowledge and intent-level control.
+            <strong>MAYA 3.0</strong> is our end-to-end IoT agent. Agents already think —
+            MAYA lets them move through OpenBody2039 MCP body knowledge and intent control.
+            Full story on <a href="https://www.ura2039.xyz" style="color:var(--pulse)">www.ura2039.xyz</a>.
           </p>
           <div class="cta">
-            <a class="btn btn-primary" href="https://github.com/RERELEGEND/openbody2039-maya">View on GitHub</a>
-            <a class="btn btn-ghost" href="MCP.md">Read the MCP docs</a>
+            <a class="btn btn-primary" href="https://www.ura2039.xyz" rel="noopener">Visit ura2039.xyz</a>
+            <a class="btn btn-ghost" href="https://github.com/RERELEGEND/openbody2039-maya">View on GitHub</a>
           </div>
         </div>
         <div class="hero-visual" aria-hidden="false">
           <img
             src="assets/maya-sit-stand.jpg"
-            alt="MAYA avatar sitting and standing in a warm desk scene"
-            width="1400"
-            height="788"
+            alt="MAYA 3.0 avatar sitting and standing — end-to-end IoT agent"
+            width="1920"
+            height="1080"
             decoding="async"
             fetchpriority="high"
           />
@@ -434,9 +504,54 @@
       </section>
 
       <div class="wrap">
+        <section id="stack">
+          <h2>MAYA 3.0 · end-to-end IoT agent</h2>
+          <p class="sub">
+            From cloud mind to embodied motion — the LEGEND stack behind
+            <a href="https://www.ura2039.xyz" style="color:var(--pulse)">www.ura2039.xyz</a>.
+          </p>
+          <div class="pillars">
+            <article class="pillar">
+              <h3>IoT agent</h3>
+              <p>
+                <strong>MAYA 3.0</strong> bridges reasoning, sensors, and action so agents
+                operate end-to-end in the real loop — not chat-only.
+              </p>
+            </article>
+            <article class="pillar">
+              <h3>Body MCP</h3>
+              <p>
+                This OpenBody2039 package is the body layer: joints, morphs, poses,
+                <code>intent_do</code> — so MAYA 3.0 can wave while still alive.
+              </p>
+            </article>
+            <article class="pillar">
+              <h3>Blog &amp; lab</h3>
+              <p>
+                Robotics, ROS2, Linux, and agent notes on
+                <a href="https://www.ura2039.xyz" rel="noopener">www.ura2039.xyz</a>
+                — 热热的博客 · We are LEGEND.
+              </p>
+            </article>
+          </div>
+          <div class="banner" style="margin-top: 1.5rem">
+            <div>
+              <strong>Read the MAYA 3.0 story</strong>
+              <p>
+                Product vision, robotics research, and IoT agent progress —
+                updated on the URA2039 blog.
+              </p>
+            </div>
+            <a class="btn btn-primary" href="https://www.ura2039.xyz" rel="noopener">www.ura2039.xyz</a>
+          </div>
+        </section>
+
         <section id="why">
           <h2>A mind needs a body</h2>
-          <p class="sub">Language models reason well. What’s missing is a constrained, performable body layer.</p>
+          <p class="sub">
+            Language models reason well. <strong>MAYA 3.0</strong> adds a constrained,
+            performable body layer for the IoT agent.
+          </p>
           <div class="story">
             <p>
               <strong>MAYA</strong> is not another chat skin. She ships joint limits, measured axis semantics,
@@ -446,10 +561,13 @@
             <p>
               Wave while still blinking and breathing: control is
               <strong>layered</strong>, like a person — not a frozen puppet.
+              That is the embodiment half of the <strong>MAYA 3.0</strong> IoT agent.
             </p>
             <p>
               Standard <strong>MCP stdio</strong>, host-agnostic. Knowledge works offline;
               live motion needs a local bridge and any OpenBody-compatible viewer.
+              Deeper architecture notes:
+              <a href="https://www.ura2039.xyz" style="color:var(--pulse)">www.ura2039.xyz</a>.
             </p>
           </div>
         </section>
@@ -497,8 +615,11 @@
     </main>
 
     <footer>
-      <span>MAYA · OpenBody2039 · MIT</span>
-      <span>Give AI Agents a Body</span>
+      <span
+        ><strong>MAYA 3.0</strong> · OpenBody2039 · MIT ·
+        <a href="https://www.ura2039.xyz" rel="noopener">www.ura2039.xyz</a></span
+      >
+      <span>Give AI Agents a Body · end-to-end IoT agent</span>
     </footer>
   </body>
 </html>
